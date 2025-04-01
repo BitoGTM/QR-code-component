@@ -8,4 +8,5 @@ Get a custom QR code instantly
 Download or use the QR anywhere
 
 📦 Tech Stack
+
 HTML/CSS/JavaScript
