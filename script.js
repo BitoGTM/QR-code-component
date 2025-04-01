@@ -9,19 +9,43 @@ document.addEventListener('DOMContentLoaded', function () {
   const downloadBtn = document.getElementById('downloadBtn');
   const errorMessage = document.getElementById('errorMessage');
   const defaultQrImage = './images/image-qr-code.png';
+  
+  // Customization elements
+  const fgColorInput = document.getElementById('fgColorInput');
+  const bgColorInput = document.getElementById('bgColorInput');
+  const sizeSlider = document.getElementById('sizeSlider');
+  const sizeValue = document.getElementById('sizeValue');
+  const errorCorrectionSelect = document.getElementById('errorCorrectionSelect');
 
   // Default state
   let currentQrUrl = '';
+  
+  // Default customization values
+  const defaultFgColor = '#000000';
+  const defaultBgColor = '#FFFFFF';
+  const defaultSize = 250;
+  const defaultErrorCorrection = 'L';
 
   // Initialize with default QR code
   qrImage.src = defaultQrImage;
   downloadBtn.style.display = 'none';
-
+  
+  // Update size value display when slider changes
+  sizeSlider.addEventListener('input', function() {
+    sizeValue.textContent = this.value;
+  });
+  
   // Generate QR code when form is submitted
   qrForm.addEventListener('submit', function (e) {
     e.preventDefault();
     generateQRCode();
   });
+  
+  // Real-time updates when customization options change
+  fgColorInput.addEventListener('change', generateQRCode);
+  bgColorInput.addEventListener('change', generateQRCode);
+  sizeSlider.addEventListener('change', generateQRCode);
+  errorCorrectionSelect.addEventListener('change', generateQRCode);
 
   // Reset button functionality
   resetBtn.addEventListener('click', function () {
@@ -29,6 +53,14 @@ document.addEventListener('DOMContentLoaded', function () {
     qrImage.src = defaultQrImage;
     errorMessage.textContent = '';
     downloadBtn.style.display = 'none';
+    
+    // Reset customization options
+    fgColorInput.value = defaultFgColor;
+    bgColorInput.value = defaultBgColor;
+    sizeSlider.value = defaultSize;
+    sizeValue.textContent = defaultSize;
+    errorCorrectionSelect.value = defaultErrorCorrection;
+    
     document.querySelector('.QRtitle').textContent = 'Improve your front-end skills by building projects';
     document.querySelector('.QRpara').textContent = 'Scan the QR code to visit Frontend Mentor and take your coding skills to the next level';
   });
@@ -58,9 +90,17 @@ document.addEventListener('DOMContentLoaded', function () {
       new URL(url);
       errorMessage.textContent = '';
 
+      // Show loading animation
       qrImage.src = 'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="%23000" stroke-width="2" opacity="0.2"/><path d="M12 2a10 10 0 0 1 10 10" stroke="%23000" stroke-width="2" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/></path></svg>';
 
-      const qrCodeUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(url)}&chs=250x250&choe=UTF-8&chld=L|0`;
+      // Get customization values
+      const fgColor = fgColorInput.value.substring(1); // Remove # from hex color
+      const bgColor = bgColorInput.value.substring(1); // Remove # from hex color
+      const size = sizeSlider.value;
+      const errorLevel = errorCorrectionSelect.value;
+      
+      // Construct QR code URL with customization parameters
+      const qrCodeUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(url)}&chs=${size}x${size}&choe=UTF-8&chld=${errorLevel}|0&chco=${fgColor},${bgColor}`;
 
       const testImg = new Image();
       testImg.onload = function () {
@@ -94,7 +134,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 3000);
   }
 
-  // Trigger Bito suggestions for forEach
+  // Remove sample data code as it's not needed
+  /*
   const sampleData1 = ['Generate', 'Reset', 'Download'];
   const sampleData2 = ['Frontend', 'Mentor', 'QR'];
   const sampleData3 = ['https://example.com', 'https://bito.ai', 'https://google.com'];
@@ -118,4 +159,5 @@ document.addEventListener('DOMContentLoaded', function () {
   for (let i = 0; i < sampleData3.length; i++) {
     console.log('Validating URL:', sampleData3[i]);
   }
+  */
 });
