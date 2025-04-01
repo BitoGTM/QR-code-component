@@ -12,6 +12,18 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Default state
   let currentQrUrl = '';
+
+  // Example array of button IDs for tracking user interaction
+  const buttonIds = ['generateBtn', 'resetBtn', 'downloadBtn'];
+  for (let i = 0; i < buttonIds.length; i++) {
+    const button = document.getElementById(buttonIds[i]);
+    if (button) {
+      button.addEventListener('mouseover', () => {
+        console.log(`Hovered on ${buttonIds[i]}`);
+      });
+    }
+  }
+
   
   // Initialize with default QR code
   qrImage.src = defaultQrImage;
