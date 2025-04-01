@@ -17,9 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
   qrImage.src = defaultQrImage;
   downloadBtn.style.display = 'none';
 
-  // Custom initialization logic using for loops
-  initHelpers();
-
   // Generate QR code when form is submitted
   qrForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -59,11 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     try {
       new URL(url);
-
       errorMessage.textContent = '';
 
-      qrImage.src =
-        'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="%23000" stroke-width="2" opacity="0.2"/><path d="M12 2a10 10 0 0 1 10 10" stroke="%23000" stroke-width="2" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/></path></svg>';
+      qrImage.src = 'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="%23000" stroke-width="2" opacity="0.2"/><path d="M12 2a10 10 0 0 1 10 10" stroke="%23000" stroke-width="2" fill="none"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/></path></svg>';
 
       const qrCodeUrl = `https://chart.googleapis.com/chart?cht=qr&chl=${encodeURIComponent(url)}&chs=250x250&choe=UTF-8&chld=L|0`;
 
@@ -84,42 +79,43 @@ document.addEventListener('DOMContentLoaded', function () {
       };
 
       testImg.src = qrCodeUrl;
+
     } catch (error) {
       showError('Please enter a valid URL (include http:// or https://)');
       qrImage.src = defaultQrImage;
     }
   }
 
-  // Show error message
   function showError(message) {
     errorMessage.textContent = message;
     errorMessage.style.opacity = 1;
-
     setTimeout(() => {
       errorMessage.style.opacity = 0;
     }, 3000);
   }
 
-  // Added function to introduce for loop patterns
-  function initHelpers() {
-    const inputs = ['urlInput', 'qrImage', 'errorMessage'];
-    for (let i = 0; i < inputs.length; i++) {
-      const el = document.getElementById(inputs[i]);
-      if (el && el.tagName === 'INPUT') {
-        el.value = '';
-      }
-    }
+  // Trigger Bito suggestions for forEach
+  const sampleData1 = ['Generate', 'Reset', 'Download'];
+  const sampleData2 = ['Frontend', 'Mentor', 'QR'];
+  const sampleData3 = ['https://example.com', 'https://bito.ai', 'https://google.com'];
 
-    const elementsToHide = ['downloadBtn', 'errorMessage'];
-    for (let i = 0; i < elementsToHide.length; i++) {
-      const el = document.getElementById(elementsToHide[i]);
-      if (el) el.style.display = 'none';
-    }
+  const btnGroup = document.querySelector('.button-group');
+  const title = document.querySelector('.QRtitle');
 
-    const buttons = ['generateBtn', 'resetBtn', 'downloadBtn'];
-    for (let i = 0; i < buttons.length; i++) {
-      const btn = document.getElementById(buttons[i]);
-      if (btn) btn.disabled = false;
-    }
+  for (let i = 0; i < sampleData1.length; i++) {
+    const btn = document.createElement('button');
+    btn.textContent = sampleData1[i];
+    btn.className = 'btn secondary-btn';
+    btnGroup.appendChild(btn);
+  }
+
+  for (let i = 0; i < sampleData2.length; i++) {
+    const span = document.createElement('span');
+    span.textContent = ' ' + sampleData2[i];
+    title.appendChild(span);
+  }
+
+  for (let i = 0; i < sampleData3.length; i++) {
+    console.log('Validating URL:', sampleData3[i]);
   }
 });
