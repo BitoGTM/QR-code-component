@@ -102,6 +102,60 @@
         </div>
     </section>
 
+
+          <p class="QRpara">Scan the QR code to visit Frontend Mentor
+              and take your coding skills to the next level</p>
+              
+          <form id="qrForm" class="QRform">
+              <div class="input-group">
+                  <input type="text" id="urlInput" placeholder="Enter URL (e.g., https://example.com)" required>
+                  <p id="errorMessage" class="error-message"></p>
+              </div>
+              
+              <fieldset class="customization-options">
+                  <legend>Customization Options</legend>
+                  
+                  <div class="option-group">
+                      <label for="fgColorInput">Foreground Color:</label>
+                      <input type="color" id="fgColorInput" value="#000000">
+                  </div>
+                  
+                  <div class="option-group">
+                      <label for="bgColorInput">Background Color:</label>
+                      <input type="color" id="bgColorInput" value="#FFFFFF">
+                  </div>
+                  
+                  <div class="option-group">
+                      <label for="sizeSlider">Size: <span id="sizeValue">250</span>px</label>
+                      <input type="range" id="sizeSlider" min="100" max="500" step="10" value="250">
+                  </div>
+                  
+                  <div class="option-group">
+                      <label for="errorCorrectionSelect">Error Correction:</label>
+                      <select id="errorCorrectionSelect">
+                          <option value="L" selected>Low (L)</option>
+                          <option value="M">Medium (M)</option>
+                          <option value="Q">Quartile (Q)</option>
+                          <option value="H">High (H)</option>
+                      </select>
+                  </div>
+              </fieldset>
+              
+              <div class="button-group">
+                  <button type="submit" id="generateBtn" class="btn primary-btn">Generate QR</button>
+                  <button type="button" id="resetBtn" class="btn secondary-btn">Reset</button>
+                  <button type="button" id="downloadBtn" class="btn download-btn">Download</button>
+              </div>
+          </form>
+      </div>
+  </main>
+  <div class="attribution">
+Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer">Frontend Mentor</a>. 
+    Coded by <a href="https://twitter.com/sushrutkm" target="_blank" rel="noopener noreferrer">Sushrut Kumar Mishra</a>.
+  <script src="./script.js"></script>
+</body>
+</html>
+=======
     <!-- Expense Table with Filters -->
     <section class="content">
         <h3 class="secondTitle">Expense List</h3>
@@ -143,3 +197,4 @@
     <script src="app.js"></script>
 </body>
 </html>
+

@@ -92,6 +92,82 @@ body {
     height: 1rem;
   }
   
+  /* Customization Options Styles */
+  .customization-options {
+    border: 1px solid var(--cl-LightGray);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .customization-options legend {
+    color: var(--cl-DarkBlue);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+  
+  .option-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.8rem;
+  }
+  
+  .option-group:last-child {
+    margin-bottom: 0;
+  }
+  
+  .option-group label {
+    font-size: 0.8rem;
+    color: var(--cl-DarkBlue);
+    margin-bottom: 0.3rem;
+  }
+  
+  .option-group input[type="color"] {
+    height: 2rem;
+    border: 1px solid var(--cl-LightGray);
+    border-radius: 0.3rem;
+    background-color: var(--cl-White);
+  }
+  
+  .option-group input[type="range"] {
+    width: 100%;
+    height: 0.5rem;
+    border-radius: 0.5rem;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--cl-LightGray);
+    outline: none;
+  }
+  
+  .option-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background: var(--cl-DarkBlue);
+    cursor: pointer;
+  }
+  
+  .option-group input[type="range"]::-moz-range-thumb {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background: var(--cl-DarkBlue);
+    cursor: pointer;
+  }
+  
+  .option-group select {
+    padding: 0.5rem;
+    border: 1px solid var(--cl-LightGray);
+    border-radius: 0.3rem;
+    font-family: var(--ff-primary);
+    font-size: 0.8rem;
+    background-color: var(--cl-White);
+    color: var(--cl-DarkBlue);
+  }
+  
   .button-group {
     display: flex;
     flex-wrap: wrap;
@@ -148,4 +224,4 @@ body {
     .QRimage {
       width: 100%;
     }
-  }}
+  }
